@@ -37,6 +37,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen options={{headerShown: false}} name='home' component={Home}/>
+        <Stack.Screen options={{headerShown: false}} name='HomeTab' component={BottomTabs}/>
+        
         </Stack.Navigator>
     </NavigationContainer>
   );
