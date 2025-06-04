@@ -1,20 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import Home from './screens/home.js'
+
+function BottomTabs() {
+  const BottomTab = createBottomTabNavigator();
   return (
-    <View style={styles.container}>
-      <Text>AOOOOO</Text>
-      <StatusBar style="auto" />
-    </View>
+      <BottomTab.Navigator 
+        initialRouteName='Home'
+        screenOptions={{ 
+          headerStyle: {backgroundColor: 'black'},
+          headerTintColor: 'cyan',
+          tabBarActiveTintColor: 'blue',
+          tabBarInactiveTintColor: '#000000',
+          tabBarActiveBackgroundColor: 'black',
+          tabBarInactiveBackgroundColor: '#050545',
+        }}>
+        <BottomTab.Screen name="home" component={Home} 
+          options={{ 
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="box" color={color} size={26} />
+            ),
+        }}/>
+      </BottomTab.Navigator>
+ 
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  const Stack = createStackNavigator();
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen options={{headerShown: false}} name='home' component={Home}/>
+        </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
