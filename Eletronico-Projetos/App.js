@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from './screens/home.js'
+import cadastroViagem from './screens/cadastroViagens.js'
 
 function BottomTabs() {
   const BottomTab = createBottomTabNavigator();
@@ -20,7 +21,7 @@ function BottomTabs() {
           tabBarActiveBackgroundColor: 'black',
           tabBarInactiveBackgroundColor: '#050545',
         }}>
-        <BottomTab.Screen name="home" component={Home} 
+        <BottomTab.Screen name="home" component={cadastroViagem} 
           options={{ 
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="box" color={color} size={26} />
@@ -36,7 +37,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen options={{headerShown: false}} name='home' component={Home}/>
+        <Stack.Screen options={{headerShown: false}} name='home' component={cadastroViagem}/>
         </Stack.Navigator>
     </NavigationContainer>
   );
